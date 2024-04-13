@@ -2,7 +2,7 @@ std := import('std')
 
 { propAcc: propAcc } := import('PropAcc')
 
-eventBus := {
+fn eventBus() {
   listeners: listeners := propAcc()
 
   on: fn on(event, listener) {
