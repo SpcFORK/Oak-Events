@@ -21,12 +21,12 @@ hlp := import('hlp')
 //   }
 // };
 
-EVB := import('src/EventBus')
+EventBus := import('src/EventBus')
 
 // ---
 
 Object.assign(hlp.getExporter(), {
-  EventBus
+  EventBus: EventBus
 })
 
 // - Spectcow
