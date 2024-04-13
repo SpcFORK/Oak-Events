@@ -25,9 +25,9 @@ EVB := import('src/EventBus')
 
 // ---
 
-Object.assign(hlp.getExporter(),{
+Object.assign(hlp.getExporter(), {
   EventBus
-}
+})
 
 // - Spectcow
 //   DOCS: https://oaklang.org/lib/
