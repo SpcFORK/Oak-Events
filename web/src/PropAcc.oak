@@ -1,0 +1,11 @@
+std := import('std')
+
+propAcc := fn(i) Ob := {
+  _!: std.default(i, {})
+
+  setAll: fn(i) Ob._! <- propAcc(i)
+  getAll: fn() Ob._!
+
+  get: fn(x) Ob._!.(x)
+  set: fn(x, v) Ob._!.(x) <- v
+}

@@ -1,0 +1,35 @@
+std := import('std')
+
+{ propAcc: propAcc } := import('PropAcc')
+
+eventBus := {
+  listeners: listeners := propAcc()
+
+  on: fn on(event, listener) {
+    with listeners.set(event) listeners.get(event) |> 
+      std.default([]) << 
+      listener
+  }
+
+  off: fn off(event, listener) if gotEv := listeners.get(event) {
+    ? -> {}
+
+    _ -> {
+      index := with std.find(gotEv) fn(ii) string(listener) = string(ii)
+
+      if index > -1 -> listeners.set(
+        event
+        with std.filter(gotEv) fn(ii, ic) ic != index
+      )
+    }
+  }
+
+  emit: fn emit(event, args...) if gotEv := listeners.get(event) {
+    ? -> {}
+
+    _ -> with std.each(gotEv) fn(ii, ic) {
+      ii(args...)
+    }
+  }
+
+}

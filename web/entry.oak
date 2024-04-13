@@ -1,19 +1,31 @@
-std := import('std')
 hlp := import('hlp')
 
 // ---
 
-fn wow {
-  with print hlp.platform?()
-}
+// const eventBus = {
+//   listeners: {} as Record<string, Function[]>,
+//
+//   on(event: string, listener: Function) {
+//     (this.listeners[event] = this.listeners[event] || []).push(listener);
+//   },
+//
+//   off(event: string, listener: Function) {
+//     if (!this.listeners[event]) return;
+//     const index = this.listeners[event].indexOf(listener);
+//     if (index > -1) this.listeners[event].splice(index, 1);
+//   },
+//
+//   emit(event: string, ...args: any[]) {
+//     if (!this.listeners[event]) return;
+//     this.listeners[event].forEach((listener: Function) => listener(...args));
+//   }
+// };
 
-wow()
+EVB := import('src/EventBus')
 
 // ---
 
-hlp.getExporter().myModule := {
-  wow: wow
-}
+hlp.getExporter().myModule := EVB
 
 // - Spectcow
 //   DOCS: https://oaklang.org/lib/
